@@ -10,7 +10,7 @@
  * @returns {void}
  */
 function startApp(name){
-  name="Abdullatif Fkheir"
+  
   process.stdin.resume();
   process.stdin.setEncoding('utf8');
   process.stdin.on('data', onDataReceived);
@@ -43,6 +43,9 @@ function onDataReceived(text) {
   }else if(text==='name\n'){
     name();
 
+  }else if (text ==='help\n'){
+    
+    
   }
   else{
     unknownCommand(text);
@@ -78,12 +81,17 @@ function hello(){
  * @returns {void}
  */
 function quit(){
-  console.log('Quitting now, goodbye!')
+  console.log('Quitting now, goodbye!');
   process.exit();
 }
 
 function name(){
-  console.log('Type your name: ')
+  console.log('Type your name: ');
 }
+
+function help(){
+  var arraycommad=['hello','quit','exit'];
+}
+
 // The following line starts the application
-startApp("Jad Sarout")
+startApp("Abdullatif Fkheir")
