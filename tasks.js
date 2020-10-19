@@ -10,6 +10,7 @@
  * @returns {void}
  */
 function startApp(name){
+  name="Abdullatif Fkheir"
   process.stdin.resume();
   process.stdin.setEncoding('utf8');
   process.stdin.on('data', onDataReceived);
@@ -39,6 +40,9 @@ function onDataReceived(text) {
   }
   else if(text === 'hello\n'){
     hello();
+  }else if(text==='name\n'){
+    name();
+
   }
   else{
     unknownCommand(text);
@@ -78,5 +82,8 @@ function quit(){
   process.exit();
 }
 
+function name(){
+  console.log('Type your name: ')
+}
 // The following line starts the application
 startApp("Jad Sarout")
