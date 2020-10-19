@@ -86,7 +86,11 @@ function quit(){
 function name(){
   console.log('Type your name: ');
 }
-
+/**
+ * lists all the possible commands
+ *
+ * @returns {void}
+ */
 function help(){
   var arraycommad=['hello','quit','exit'];
   console.log("All the possible commands :\n");
