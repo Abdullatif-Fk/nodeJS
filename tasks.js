@@ -42,10 +42,8 @@ function onDataReceived(text) {
     hello();
   }else if(text==='name\n'){
     name();
-
   }else if (text ==='help\n'){
-    
-    
+    help();   
   }
   else{
     unknownCommand(text);
@@ -91,6 +89,10 @@ function name(){
 
 function help(){
   var arraycommad=['hello','quit','exit'];
+  console.log("All the possible commands :\n");
+  for (let i in arraycommad){
+    console.log(arraycommad[i]+"\n");
+  }
 }
 
 // The following line starts the application
