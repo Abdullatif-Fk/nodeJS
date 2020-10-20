@@ -35,22 +35,31 @@ function startApp(name){
  * @param  {string} text data typed by the user
  * @returns {void}
  */
+
+var arraycommad=['hello','quit','exit','list'];
+var arrayCommExpli=['if I write "hello x", the answer should be "hello x!" ','quit from program',
+  'exit from program','list all tasks'];
 function onDataReceived(text) {
   var input=text;
   input =input.trim();
   input=input.split();
-  console.log(text);
+  //console.log(text);
   var patt = new RegExp("hello");
-  var res = patt.test(input); 
+  var helpp = new RegExp("help");
+  var listt = new RegExp("list");
+
+  
  if (text === 'quit\n' ||text === 'exit\n') {
     quit();
   }
-  else if(res){
+  else if( patt.test(input)){
     hello(input);
-  }else if(text==='name\n'){
+  }else if(text==='name'){
     name();
-  }else if (text ==='help\n'){
+  }else if (helpp.test(input)){
     help();   
+  }else if (listt.test(input)){
+    list();
   }
   else{
     unknownCommand(text);
@@ -75,14 +84,7 @@ function unknownCommand(c){
  * @returns {void}
  */
 function hello( input){
-  
- // console.log("hi");
- //textt=textt.trim();
- //textt=textt.split();
- console.log(input+"!");
- 
-
-  
+  console.log(input+"!");
 }
 
 
@@ -105,13 +107,18 @@ function name(){
  * @returns {void}
  */
 function help(){
-  var arraycommad=['hello','quit','exit'];
-  var arrayCommExpli=['if I write "hello x", the answer should be "hello x!" ','quit from program',
-  'exit from program'];
+
   console.log("All the possible commands :\n");
   for (let i in arraycommad){
     console.log(arraycommad[i]+"   ------"+arrayCommExpli[i]+"\n");
   }
+}
+
+function list(){
+  for (let i in arraycommad){
+    console.log(i+"      "+arraycommad[i]+"\n");
+  }
+
 }
 
 // The following line starts the application
