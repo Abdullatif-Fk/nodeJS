@@ -16,6 +16,7 @@ function startApp(name){
   process.stdin.on('data', onDataReceived);
   console.log(`Welcome to ${name}'s application!`)
   console.log("--------------------")
+  //console.log(process.argv)
 }
 
 
@@ -35,11 +36,17 @@ function startApp(name){
  * @returns {void}
  */
 function onDataReceived(text) {
-  if (text === 'quit\n' ||text === 'exit\n') {
+  var input=text;
+  input =input.trim();
+  input=input.split();
+  console.log(text);
+  var patt = new RegExp("hello");
+  var res = patt.test(input); 
+ if (text === 'quit\n' ||text === 'exit\n') {
     quit();
   }
-  else if(text === 'hello\n'){
-    hello();
+  else if(res){
+    hello(text);
   }else if(text==='name\n'){
     name();
   }else if (text ==='help\n'){
@@ -49,7 +56,6 @@ function onDataReceived(text) {
     unknownCommand(text);
   }
 }
-
 
 /**
  * prints "unknown command"
@@ -68,8 +74,14 @@ function unknownCommand(c){
  *
  * @returns {void}
  */
-function hello(){
-  console.log('hello!')
+function hello( textt){
+  
+ // console.log("hi");
+ textt=textt.trim();
+ textt=textt.split();
+ console.log(textt+"!");
+
+  
 }
 
 
