@@ -149,21 +149,26 @@ function remove(input){
   }else{
     var command=input[0].split(" ");
    // console.log(parseInt(command[1]))
-    
-    if(Number.isInteger(parseInt(command[1]))){
-     // console.log("hhhhhhhhhhhhhhh")
-      var pos=parseInt(command[1]);
-     // console.log(pos);
-      arraycommad.splice(pos,1);
-      arrayCommExpli.splice(pos,1);
-      for (let i in arraycommad){
-        console.log(i+"      "+arraycommad[i]+"\n");
-      }
-
-
-    }else{
-    console.log("you should type like this 'remove 3'")
+   var pos=parseInt(command[1]);
+    if(pos<arraycommad.length){
+      if(Number.isInteger(parseInt(command[1]))){
+      // console.log("hhhhhhhhhhhhhhh")
+       
+      // console.log(pos);
+       arraycommad.splice(pos,1);
+       arrayCommExpli.splice(pos,1);
+       /*for (let i in arraycommad){
+         console.log(i+"      "+arraycommad[i]+"\n");
+       }*/
+ 
+ 
+     }else{
+     console.log("you should type like this 'remove 3'")
+     }
+    }else {
+      console.log("this task does not exist!!!")
     }
+
 
 
   }
