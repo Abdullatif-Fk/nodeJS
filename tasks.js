@@ -47,6 +47,7 @@ function onDataReceived(text) {
   var patt = new RegExp("hello");
   var helpp = new RegExp("help");
   var listt = new RegExp("list");
+  var addd = new RegExp("add");
 
   
  if (text === 'quit\n' ||text === 'exit\n') {
@@ -60,6 +61,8 @@ function onDataReceived(text) {
     help();   
   }else if (listt.test(input)){
     list();
+  }else if (addd.test(input)){
+    add(input);
   }
   else{
     unknownCommand(text);
@@ -117,6 +120,19 @@ function help(){
 function list(){
   for (let i in arraycommad){
     console.log(i+"      "+arraycommad[i]+"\n");
+  }
+
+}
+
+function add(input){
+ // input=input.trim();
+  if(input[0]==="add"){
+    console.log("error : you should type like 'add nameOfTask'")
+  }else{
+    var command=input[0].split(" ");
+    arraycommad.push(command[1]);
+    arrayCommExpli.push("");
+    
   }
 
 }
