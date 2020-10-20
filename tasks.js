@@ -43,7 +43,7 @@ var arrayCommExpli=['if I write "hello x", the answer should be "hello x!" ','qu
   '"remove" : remove last task   "remove 2" : remove second task',
   'should change task  to "done"','should change task  to "not done"'];
 //var arrayTask=["scan","print"];
-//var task="";
+var task="";
 const fs =require('fs');
 let load=loadJSON('database.json');
 let arrayTask=[];
@@ -84,7 +84,8 @@ function onDataReceived(text) {
     add(input);
   }else if (removee.test(input)){
     remove(input);
-  }else if (editt.test(input)){
+  }
+   if (editt.test(input)){
     edit(input);
   }else if (checkk.test(input)){
     check(input);
@@ -253,6 +254,7 @@ function edit(input){
     var editpos=parseInt(inpuSplit[1]);
     
     if(inpuSplit[0]==="edit"&& Number.isInteger(editpos)){
+      task="";
       for (let i=2 ;i<inpuSplit.length;i++){
         task=task.concat(" "+inpuSplit[i]);
         //console.log(task);
@@ -264,9 +266,11 @@ function edit(input){
     }
     
     
-    else if(inpuSplit[0]==="edit"){
+      else if(inpuSplit[0]==="edit"){
       //console.log("hello edit")
+      task="";
       for (let i=1 ;i<inpuSplit.length;i++){
+        
         task=task.concat(" "+inpuSplit[i]);
         //console.log(task);
       }

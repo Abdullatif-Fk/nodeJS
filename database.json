@@ -3,14 +3,16 @@
     "scan",
     "print",
     "x",
-    "y",
-    "z"
+    " homework",
+    "z",
+    " do any thing"
   ],
   "checked": [
     false,
     true,
     false,
     true,
-    false
+    false,
+    true
   ]
 }
