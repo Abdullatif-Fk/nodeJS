@@ -35,11 +35,12 @@ function startApp(name){
  * @param  {string} text data typed by the user
  * @returns {void}
  */
-var checked=[false,true , false, true , false ,true ];
+var checked=[false,true ];
 var arraycommad=['hello','quit','exit','list','add','remove'];
 var arrayCommExpli=['if I write "hello x", the answer should be "hello x!" ','quit from program',
   'exit from program','list all tasks','add a new task',
   '"remove" : remove last task   "remove 2" : remove second task'];
+var arrayTask=["scan","print"];
 var task="";
 function onDataReceived(text) {
   var input=text;
@@ -52,6 +53,8 @@ function onDataReceived(text) {
   var addd = new RegExp("add");
   var removee = new RegExp("remove");
   var editt = new RegExp("edit");
+  var editt = new RegExp("edit");
+
 
 
 
@@ -128,11 +131,11 @@ function help(){
 }
 
 function list(){
-  for (let i in arraycommad){
+  for (let i in arrayTask){
     if(checked[i]===false){
-      console.log(i+"-"+"[ ]"+"   "+arraycommad[i]+"\n");
+      console.log(i+"-"+"[ ]"+"   "+arrayTask[i]+"\n");
     }else{
-      console.log(i+"-"+"[✔]"+"   "+arraycommad[i]+"\n");
+      console.log(i+"-"+"[✔]"+"   "+arrayTask[i]+"\n");
 
     }
     
@@ -146,29 +149,29 @@ function add(input){
     console.log("error : you should type like 'add nameOfTask'")
   }else{
     var command=input[0].split(" ");
-    arraycommad.push(command[1]);
-    arrayCommExpli.push("");
+    arrayTask.push(command[1]);
+    //arrayCommExpli.push("");
     
   }
 
 }
 function remove(input){
   if (input[0]==="remove"){
-    arraycommad.pop();
-    arrayCommExpli.pop();
+    arrayTask.pop();
+    //arrayCommExpli.pop();
     console.log("The last task is removed.")
   }
   else{
     var command=input[0].split(" ");
    
    var pos=parseInt(command[1]);
-    if(pos<arraycommad.length){
+    if(pos<arrayTask.length){
       if(Number.isInteger(parseInt(command[1]))){
       // console.log("hhhhhhhhhhhhhhh")
        
       // console.log(pos);
-       arraycommad.splice(pos,1);
-       arrayCommExpli.splice(pos,1);
+       arrayTask.splice(pos,1);
+       //arrayCommExpli.splice(pos,1);
      }
      else{
      console.log("you should type like this 'remove 3'")
@@ -205,8 +208,8 @@ function edit(input){
         //console.log(task);
       }
 
-      arraycommad.splice(editpos,1,task);
-       arrayCommExpli.splice(editpos,1,task);
+      arrayTask.splice(editpos,1,task);
+      //arrayCommExpli.splice(editpos,1,task);
 
     }
     
@@ -218,10 +221,10 @@ function edit(input){
         //console.log(task);
       }
       
-      arraycommad.pop();
-      arrayCommExpli.pop();
-      arraycommad.push(task);
-      arrayCommExpli.push("");
+      arrayTask.pop();
+      //arrayCommExpli.pop();
+      arrayTask.push(task);
+      //arrayCommExpli.push("");
 
     }
     
