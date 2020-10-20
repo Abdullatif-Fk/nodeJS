@@ -35,7 +35,7 @@ function startApp(name){
  * @param  {string} text data typed by the user
  * @returns {void}
  */
-
+var checked=[false,true , false, true , false ,true ];
 var arraycommad=['hello','quit','exit','list','add','remove'];
 var arrayCommExpli=['if I write "hello x", the answer should be "hello x!" ','quit from program',
   'exit from program','list all tasks','add a new task',
@@ -129,7 +129,13 @@ function help(){
 
 function list(){
   for (let i in arraycommad){
-    console.log(i+"      "+arraycommad[i]+"\n");
+    if(checked[i]===false){
+      console.log(i+"-"+"[ ]"+"   "+arraycommad[i]+"\n");
+    }else{
+      console.log(i+"-"+"[✔]"+"   "+arraycommad[i]+"\n");
+
+    }
+    
   }
 
 }
