@@ -37,11 +37,11 @@ function startApp(name){
  */
 var checked=[false,true ];
 
-var arraycommad=['hello','quit','exit','list','add','remove','check'];
+var arraycommad=['hello','quit','exit','list','add','remove','check','uncheck'];
 var arrayCommExpli=['if I write "hello x", the answer should be "hello x!" ','quit from program',
   'exit from program','list all tasks','add a new task',
   '"remove" : remove last task   "remove 2" : remove second task',
-  'should change task 1 to "done"'];
+  'should change task  to "done"','should change task  to "not done"'];
 var arrayTask=["scan","print"];
 var task="";
 function onDataReceived(text) {
