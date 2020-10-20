@@ -40,6 +40,7 @@ var arraycommad=['hello','quit','exit','list','add','remove'];
 var arrayCommExpli=['if I write "hello x", the answer should be "hello x!" ','quit from program',
   'exit from program','list all tasks','add a new task',
   '"remove" : remove last task   "remove 2" : remove second task'];
+var task="";
 function onDataReceived(text) {
   var input=text;
   input =input.trim();
@@ -50,6 +51,8 @@ function onDataReceived(text) {
   var listt = new RegExp("list");
   var addd = new RegExp("add");
   var removee = new RegExp("remove");
+  var editt = new RegExp("edit");
+
 
 
   
@@ -68,6 +71,8 @@ function onDataReceived(text) {
     add(input);
   }else if (removee.test(input)){
     remove(input);
+  }else if (editt.test(input)){
+    edit(input);
   }
   else{
     unknownCommand(text);
@@ -146,9 +151,10 @@ function remove(input){
     arraycommad.pop();
     arrayCommExpli.pop();
     console.log("The last task is removed.")
-  }else{
+  }
+  else{
     var command=input[0].split(" ");
-   // console.log(parseInt(command[1]))
+   
    var pos=parseInt(command[1]);
     if(pos<arraycommad.length){
       if(Number.isInteger(parseInt(command[1]))){
@@ -157,21 +163,66 @@ function remove(input){
       // console.log(pos);
        arraycommad.splice(pos,1);
        arrayCommExpli.splice(pos,1);
-       /*for (let i in arraycommad){
-         console.log(i+"      "+arraycommad[i]+"\n");
-       }*/
- 
- 
-     }else{
+     }
+     else{
      console.log("you should type like this 'remove 3'")
      }
-    }else {
+    }
+    else {
       console.log("this task does not exist!!!")
     }
 
 
 
   }
+
+}
+
+function edit(input){
+  
+  var inpuSplit=input[0].split(" ");
+  //console.log(inpuSplit);
+  if(inpuSplit.length==1){
+    if(input[0]==="edit"){
+      console.log('You should type like : "edit new-text" OR "edit 2 new-text"');
+    }
+    
+  }else if(inpuSplit.length>1){
+    
+      
+      
+    var editpos=parseInt(inpuSplit[1]);
+    
+    if(inpuSplit[0]==="edit"&& Number.isInteger(editpos)){
+      for (let i=2 ;i<inpuSplit.length;i++){
+        task=task.concat(" "+inpuSplit[i]);
+        //console.log(task);
+      }
+
+      arraycommad.splice(editpos,1,task);
+       arrayCommExpli.splice(editpos,1,task);
+
+    }
+    
+    
+    else if(inpuSplit[0]==="edit"){
+      //console.log("hello edit")
+      for (let i=1 ;i<inpuSplit.length;i++){
+        task=task.concat(" "+inpuSplit[i]);
+        //console.log(task);
+      }
+      
+      arraycommad.pop();
+      arrayCommExpli.pop();
+      arraycommad.push(task);
+      arrayCommExpli.push("");
+
+    }
+    
+
+  }
+
+
 
 }
 
