@@ -48,6 +48,8 @@ function onDataReceived(text) {
   var helpp = new RegExp("help");
   var listt = new RegExp("list");
   var addd = new RegExp("add");
+  var removee = new RegExp("remove");
+
 
   
  if (text === 'quit\n' ||text === 'exit\n') {
@@ -63,6 +65,8 @@ function onDataReceived(text) {
     list();
   }else if (addd.test(input)){
     add(input);
+  }else if (removee.test(input)){
+    remove(input);
   }
   else{
     unknownCommand(text);
@@ -133,6 +137,34 @@ function add(input){
     arraycommad.push(command[1]);
     arrayCommExpli.push("");
     
+  }
+
+}
+function remove(input){
+  if (input[0]==="remove"){
+    arraycommad.pop();
+    arrayCommExpli.pop();
+    console.log("The last task is removed.")
+  }else{
+    var command=input[0].split(" ");
+   // console.log(parseInt(command[1]))
+    
+    if(Number.isInteger(parseInt(command[1]))){
+     // console.log("hhhhhhhhhhhhhhh")
+      var pos=parseInt(command[1]);
+     // console.log(pos);
+      arraycommad.splice(pos,1);
+      arrayCommExpli.splice(pos,1);
+      for (let i in arraycommad){
+        console.log(i+"      "+arraycommad[i]+"\n");
+      }
+
+
+    }else{
+    console.log("you should type like this 'remove 3'")
+    }
+
+
   }
 
 }
