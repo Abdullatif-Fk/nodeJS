@@ -36,9 +36,10 @@ function startApp(name){
  * @returns {void}
  */
 
-var arraycommad=['hello','quit','exit','list'];
+var arraycommad=['hello','quit','exit','list','add','remove'];
 var arrayCommExpli=['if I write "hello x", the answer should be "hello x!" ','quit from program',
-  'exit from program','list all tasks'];
+  'exit from program','list all tasks','add a new task',
+  '"remove" : remove last task   "remove 2" : remove second task'];
 function onDataReceived(text) {
   var input=text;
   input =input.trim();
