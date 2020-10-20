@@ -46,7 +46,7 @@ function onDataReceived(text) {
     quit();
   }
   else if(res){
-    hello(text);
+    hello(input);
   }else if(text==='name\n'){
     name();
   }else if (text ==='help\n'){
@@ -74,12 +74,13 @@ function unknownCommand(c){
  *
  * @returns {void}
  */
-function hello( textt){
+function hello( input){
   
  // console.log("hi");
- textt=textt.trim();
- textt=textt.split();
- console.log(textt+"!");
+ //textt=textt.trim();
+ //textt=textt.split();
+ console.log(input+"!");
+ 
 
   
 }
@@ -105,9 +106,11 @@ function name(){
  */
 function help(){
   var arraycommad=['hello','quit','exit'];
+  var arrayCommExpli=['if I write "hello x", the answer should be "hello x!" ','quit from program',
+  'exit from program'];
   console.log("All the possible commands :\n");
   for (let i in arraycommad){
-    console.log(arraycommad[i]+"\n");
+    console.log(arraycommad[i]+"   ------"+arrayCommExpli[i]+"\n");
   }
 }
 
