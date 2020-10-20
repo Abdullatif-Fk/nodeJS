@@ -1,0 +1,16 @@
+{
+  "arrayTask": [
+    "scan",
+    "print",
+    "x",
+    "y",
+    "z"
+  ],
+  "checked": [
+    false,
+    true,
+    false,
+    true,
+    false
+  ]
+}

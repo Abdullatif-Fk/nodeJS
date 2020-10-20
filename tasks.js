@@ -35,15 +35,24 @@ function startApp(name){
  * @param  {string} text data typed by the user
  * @returns {void}
  */
-var checked=[false,true ];
+//var checked=[false,true ];
 
 var arraycommad=['hello','quit','exit','list','add','remove','check','uncheck'];
 var arrayCommExpli=['if I write "hello x", the answer should be "hello x!" ','quit from program',
   'exit from program','list all tasks','add a new task',
   '"remove" : remove last task   "remove 2" : remove second task',
   'should change task  to "done"','should change task  to "not done"'];
-var arrayTask=["scan","print"];
-var task="";
+//var arrayTask=["scan","print"];
+//var task="";
+const fs =require('fs');
+let load=loadJSON('database.json');
+let arrayTask=[];
+let checked;
+arrayTask=load.arrayTask;
+checked=load.checked;
+//console.log(checked)
+
+
 function onDataReceived(text) {
   var input=text;
   input =input.trim();
@@ -115,7 +124,38 @@ function hello( input){
  *
  * @returns {void}
  */
+function loadJSON(filename=''){
+  return JSON.parse(
+
+    fs.existsSync(filename)
+    ? fs.readFileSync(filename).toString()
+    :'""'
+  )
+
+  
+ // console.log('Quitting now, goodbye!');
+  //process.exit();
+}
+
+function saveJSON(filename ='',json='""'){
+    return fs.writeFileSync(
+      filename,
+      JSON.stringify(
+        json,
+        null,
+        2
+      )
+
+
+    )
+
+
+}
 function quit(){
+
+  load.arrayTask=arrayTask;
+  load.checked=checked;
+  saveJSON('database.json',load);
   console.log('Quitting now, goodbye!');
   process.exit();
 }
@@ -288,3 +328,5 @@ function uncheck(input){
 
 // The following line starts the application
 startApp("Abdullatif Fkheir")
+
+//console.log(load);
