@@ -36,10 +36,12 @@ function startApp(name){
  * @returns {void}
  */
 var checked=[false,true ];
-var arraycommad=['hello','quit','exit','list','add','remove'];
+
+var arraycommad=['hello','quit','exit','list','add','remove','check'];
 var arrayCommExpli=['if I write "hello x", the answer should be "hello x!" ','quit from program',
   'exit from program','list all tasks','add a new task',
-  '"remove" : remove last task   "remove 2" : remove second task'];
+  '"remove" : remove last task   "remove 2" : remove second task',
+  'should change task 1 to "done"'];
 var arrayTask=["scan","print"];
 var task="";
 function onDataReceived(text) {
@@ -53,7 +55,8 @@ function onDataReceived(text) {
   var addd = new RegExp("add");
   var removee = new RegExp("remove");
   var editt = new RegExp("edit");
-  var editt = new RegExp("edit");
+  var checkk = new RegExp("check");
+  var uncheckk = new RegExp("uncheck");
 
 
 
@@ -64,8 +67,6 @@ function onDataReceived(text) {
   }
   else if( patt.test(input)){
     hello(input);
-  }else if(text==='name'){
-    name();
   }else if (helpp.test(input)){
     help();   
   }else if (listt.test(input)){
@@ -76,9 +77,14 @@ function onDataReceived(text) {
     remove(input);
   }else if (editt.test(input)){
     edit(input);
+  }else if (checkk.test(input)){
+    check(input);
   }
   else{
     unknownCommand(text);
+  }
+   if (uncheckk.test(input)){
+    uncheck(input);
   }
 }
 
@@ -150,6 +156,7 @@ function add(input){
   }else{
     var command=input[0].split(" ");
     arrayTask.push(command[1]);
+    checked.push(false);
     //arrayCommExpli.push("");
     
   }
@@ -158,6 +165,7 @@ function add(input){
 function remove(input){
   if (input[0]==="remove"){
     arrayTask.pop();
+    checked.pop();
     //arrayCommExpli.pop();
     console.log("The last task is removed.")
   }
@@ -171,6 +179,8 @@ function remove(input){
        
       // console.log(pos);
        arrayTask.splice(pos,1);
+       checked.splice(pos,1);
+
        //arrayCommExpli.splice(pos,1);
      }
      else{
@@ -234,6 +244,47 @@ function edit(input){
 
 
 }
+function check(input){
+  var inpuSplit=input[0].split(" ");
+  if(inpuSplit.length==1){
+    if(input[0]==="check"){
+
+      console.log("you should type the command like : 'check 2'");
+    }
+
+
+  }else if(inpuSplit.length==2){
+    var editpos=parseInt(inpuSplit[1]);
+    checked[editpos] =true;
+
+
+
+  }
+
+}
+
+function uncheck(input){
+  //console.log(input);
+  var inpuSplit=input[0].split(" ");
+  
+  if(inpuSplit.length==1){
+    if(input[0]==="uncheck"){
+
+      console.log("you should type the command like : 'uncheck 2'");
+    }
+
+
+  }else if(inpuSplit.length==2){
+    var editpos=parseInt(inpuSplit[1]);
+    checked[editpos] =false;
+
+
+
+  }
+
+}
+
+
 
 // The following line starts the application
 startApp("Abdullatif Fkheir")
